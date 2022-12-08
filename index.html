@@ -1,1 +1,42 @@
-<h1>Let's build the solution here for advertising</h1>
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>How To Get URL Parameters using JavaScript?</title>
+</head>
+  
+<body onload="getParameters()">
+    <h1 id="title" style="color:black;">
+        GeeksforGeeks
+    </h1> 
+    <p id="descp">
+        This is a sample text
+    </p>  
+    <button onclick="getParameters()"> Get URL parameters </button>
+    <script>
+    function getParameters() {
+        const queryString = window.location.search;
+        var params = queryString.split("?");
+        var keyValuePairs = {};
+
+        params.forEach((param, index) => {
+            if(index == 0) {
+                return;
+            }
+            var attributes = param.split("=");
+            keyValuePairs[attributes[0]] = attributes[1];
+        });
+
+        var heading = document.getElementById("title");
+        
+        heading.innerText = keyValuePairs["text"];
+        heading.style.color = keyValuePairs["color"];
+
+        var descp = document.getElementById("descp");
+        descp.innerText = keyValuePairs["descp"];
+    }
+
+    </script>
+</body>
+  
+</html>
